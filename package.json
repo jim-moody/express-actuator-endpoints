@@ -1,5 +1,5 @@
 {
-  "name": "actuator-endpoints",
+  "name": "express-actuator-endpoints",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
@@ -9,6 +9,7 @@
     "start": "babel-node app.js",
     "git-info": "node-git-info-json"
   },
+  "files": ["dist"],
   "keywords": [],
   "author": "",
   "license": "ISC",
