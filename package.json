@@ -10,8 +10,12 @@
     "git-info": "node-git-info-json"
   },
   "files": ["dist"],
-  "keywords": [],
-  "author": "",
+  "keywords": ["express", "actuator", "node"],
+  "homepage": "https://github.com/jim-moody/express-actuator-endpoints",
+  "repository": {
+    "url": "https://github.com/jim-moody/express-actuator-endpoints"
+  },
+  "author": "Jim Moody <jimsmoody@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "babel-cli": "^6.26.0",
