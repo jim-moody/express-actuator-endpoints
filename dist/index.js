@@ -11,9 +11,21 @@ var health = (function (req, res) {
   });
 });
 
+var gitInfo = void 0;
+try {
+  var appRoot = require("app-root-path");
+  gitInfo = require(appRoot + "/git.properties.json");
+} catch (e) {
+  console.log("Add a git.properties.json to serve up git info at this endpoint");
+}
+
 var info = (function (req, res) {
+  var info = {};
+  if (gitInfo) {
+    info.git = gitInfo;
+  }
   res.json({
-    info: "some info"
+    info: info
   });
 });
 
