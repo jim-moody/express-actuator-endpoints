@@ -1,0 +1,18 @@
+{
+  "git": {
+    "commit": {
+      "message": {
+        "full": "Initial commit",
+        "short": "Initial commit"
+      },
+      "time": "Fri Feb 09 2018 15:59:57 GMT-0500 (EST)",
+      "id": "71d9d833fe5a6de15988700ddbf77a2575502e3f",
+      "abbrevId": "71d9d83",
+      "user": {
+        "email": "jim.moody@libertymutual.com",
+        "name": "JIM MOODY"
+      }
+    },
+    "branch": "master"
+  }
+}
