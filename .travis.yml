@@ -9,4 +9,3 @@ deploy:
   on:
     tags: true
     repo: jim-moody/express-actuator-endpoints
-    branch: master
