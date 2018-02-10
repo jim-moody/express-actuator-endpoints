@@ -1,5 +1,6 @@
-import appRoot from "app-root-path";
 /* eslint-disable global-require */
+import appRoot from "app-root-path";
+
 const gitInfo = () => {
   try {
     return require(`${appRoot}/git.properties.json`);
