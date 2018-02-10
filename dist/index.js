@@ -3,6 +3,7 @@
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
 var express = _interopDefault(require('express'));
+var appRoot = _interopDefault(require('app-root-path'));
 
 var health = (function (req, res) {
   res.json({
@@ -11,21 +12,20 @@ var health = (function (req, res) {
   });
 });
 
-var gitInfo = void 0;
-try {
-  var appRoot = require("app-root-path");
-  gitInfo = require(appRoot + "/git.properties.json");
-} catch (e) {
-  console.log("Add a git.properties.json to serve up git info at this endpoint");
-}
+/* eslint-disable global-require */
+var gitInfo = function gitInfo() {
+  try {
+    return require(appRoot + "/git.properties.json");
+  } catch (e) {
+    console.warn("No git.properties.json file found at app root, use https://www.npmjs.com/package/node-git-info-json to generate this file");
+    return Error("No git properties file found at app root");
+  }
+};
 
 var info = (function (req, res) {
-  var info = {};
-  if (gitInfo) {
-    info.git = gitInfo;
-  }
+  var git = gitInfo() || {};
   res.json({
-    info: info
+    git: git
   });
 });
 

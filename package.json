@@ -6,11 +6,19 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "start": "babel-node app.js",
+    "start": "nodemon app.js --exec babel-node --presets env ",
+    "test": "jest",
+    "debug": "nodemon app.js --inspect --exec babel-node --presets env",
     "git-info": "node-git-info-json"
   },
-  "files": ["dist"],
-  "keywords": ["express", "actuator", "node"],
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "express",
+    "actuator",
+    "node"
+  ],
   "homepage": "https://github.com/jim-moody/express-actuator-endpoints",
   "repository": {
     "url": "https://github.com/jim-moody/express-actuator-endpoints"
@@ -20,18 +28,24 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
+    "babel-jest": "^22.2.2",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-preset-env": "^1.6.1",
     "eslint": "^4.16.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jest": "^21.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.5.1",
+    "jest": "^22.2.2",
+    "mock-fs": "^4.4.2",
+    "nodemon": "^1.14.12",
     "rollup": "^0.50.0",
     "rollup-plugin-babel": "^3.0.3",
     "rollup-plugin-commonjs": "^8.2.6",
-    "rollup-plugin-node-resolve": "^3.0.0"
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "supertest": "^3.0.0"
   },
   "dependencies": {
     "app-root-path": "^2.0.1",
