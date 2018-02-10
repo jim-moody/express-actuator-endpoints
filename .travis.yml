@@ -1,3 +1,12 @@
 language: node_js
 node_js:
-  - "7"
+- '7'
+deploy:
+  provider: npm
+  email: jimsmoody@gmail.com
+  api_key:
+    secure: C7ipwvzKjn2/JYpGyru1boly4xECuJEM2RhH5HuuN3pQ54F2pvpaHpweLSGYOEGjg5wuXXdafrjvtc+2Mq7JPRltJ7xgbtCIZx7lvCLr8vYD9cFD9ylrb/1GA+XOT20aCma2YptJu0FhHhLAZrp7HnbmSfqPHnnt9vXQQrxvkwH/k5wEOEYDdSnho/TGBxju+mj2Kmj0Z4EVqFiRKBjbqVOfhxH47ZRK3QQQMj+jVAUbEvHykXtyTr/plEcgouew1aM2oMm09nQ1kawSg6hJd8rnoPAVXNRxUqI1reTR7U7oR6cF197LZY5Fde7kWRCotsaC1EHUpzSwfVEUh8DixiZTzG1VNjEQvSzKbkySJxx8+gyy8Z/XUVnxTOIIdd2uTe+Amm6D9SGQ13qA6obUuaOwz/D6pwbBbAsc5gQtRdLITfGif1sMK+qxrFOF8g2ffHIMyTamVzlB4cpoHyTnyWnaymvDFPuf1FrDm5DM0qqyJUtDsMrVy/mSuS3P1uayUwIoGHOaI8lhOzKyoNL6hHyHn8RvwQSLYzBWEL7yGM8KqXywzwQ3P4tI1iQGf6VfuJKgJTVcQDXqPVTdd5MwZ+FDVi61qxQvS530Qbf26etHVklP/u6jKglVSN4FdDqu8IvKSJCfB+XyT6D0oX5BD7LPB2Tw2tsUjLjbGMvz3AE=
+  on:
+    tags: true
+    repo: jim-moody/express-actuator-endpoints
+    branch: master
