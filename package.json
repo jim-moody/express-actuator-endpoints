@@ -11,14 +11,14 @@
     "debug": "nodemon app.js --inspect --exec babel-node --presets env",
     "git-info": "node-git-info-json"
   },
-  "files": [
-    "dist"
-  ],
-  "keywords": [
-    "express",
-    "actuator",
-    "node"
-  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test && npm run build",
+      "pre-push": "npm test"
+    }
+  },
+  "files": ["dist"],
+  "keywords": ["express", "actuator", "node"],
   "homepage": "https://github.com/jim-moody/express-actuator-endpoints",
   "repository": {
     "url": "https://github.com/jim-moody/express-actuator-endpoints"
@@ -38,6 +38,7 @@
     "eslint-plugin-jest": "^21.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.5.1",
+    "husky": "^0.14.3",
     "jest": "^22.2.2",
     "mock-fs": "^4.4.2",
     "nodemon": "^1.14.12",
