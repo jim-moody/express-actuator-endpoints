@@ -6,7 +6,8 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "start": "nodemon app.js --exec babel-node --presets env ",
+    "start":
+      "nodemon app.js --exec babel-node --presets env --plugins transform-object-rest-spread",
     "test": "jest",
     "debug": "nodemon app.js --inspect --exec babel-node --presets env",
     "git-info": "node-git-info-json"
@@ -17,14 +18,8 @@
       "pre-push": "npm test"
     }
   },
-  "files": [
-    "dist"
-  ],
-  "keywords": [
-    "express",
-    "actuator",
-    "node"
-  ],
+  "files": ["dist"],
+  "keywords": ["express", "actuator", "node"],
   "homepage": "https://github.com/jim-moody/express-actuator-endpoints",
   "repository": {
     "url": "https://github.com/jim-moody/express-actuator-endpoints"
@@ -36,6 +31,7 @@
     "babel-core": "^6.26.0",
     "babel-jest": "^22.2.2",
     "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "eslint": "^4.16.0",
     "eslint-config-airbnb": "^16.1.0",

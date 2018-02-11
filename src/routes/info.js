@@ -1,8 +1,10 @@
-import gitInfo from "../helpers/gitInfo";
+export default (req, res, config) => {
+  const defaultBody = {};
 
-export default (req, res) => {
-  const git = gitInfo() || {};
-  res.json({
-    git
-  });
+  const body = {
+    ...defaultBody,
+    ...config
+  };
+
+  res.json(body);
 };

@@ -1,5 +1,12 @@
-export default (req, res) => {
-  res.json({
-    env: process.env
-  });
+export default (req, res, config) => {
+  const defaultBody = {
+    ...process.env
+  };
+
+  const body = {
+    ...defaultBody,
+    ...config
+  };
+
+  res.json(body);
 };

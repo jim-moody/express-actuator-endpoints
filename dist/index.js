@@ -3,44 +3,54 @@
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
 var express = _interopDefault(require('express'));
-var appRoot = _interopDefault(require('app-root-path'));
 
-var health = (function (req, res) {
-  res.json({
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var health = (function (req, res, config) {
+  var defaultBody = {
     status: "UP",
     description: "Your API"
-  });
+  };
+
+  var body = _extends({}, defaultBody, config);
+
+  res.json(body);
 });
 
-/* eslint-disable global-require */
-var gitInfo = function gitInfo() {
-  try {
-    return require(appRoot + "/git.properties.json");
-  } catch (e) {
-    console.warn("No git.properties.json file found at app root, use https://www.npmjs.com/package/node-git-info-json to generate this file");
-    return Error("No git properties file found at app root");
-  }
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var info = (function (req, res, config) {
+  var defaultBody = {};
+
+  var body = _extends$1({}, defaultBody, config);
+
+  res.json(body);
+});
+
+var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var env = (function (req, res, config) {
+  var defaultBody = _extends$2({}, process.env);
+
+  var body = _extends$2({}, defaultBody, config);
+
+  res.json(body);
+});
+
+var configureController = function configureController(controller, options) {
+  return function (req, res) {
+    controller(req, res, options);
+  };
 };
 
-var info = (function (req, res) {
-  var git = gitInfo() || {};
-  res.json({
-    git: git
-  });
-});
-
-var env = (function (req, res) {
-  res.json({
-    env: process.env
-  });
-});
-
 var index = (function () {
+  var config = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { health: {}, info: {}, env: {} };
+
   var router = express.Router();
 
-  router.get("/health", health);
-  router.get("/info", info);
-  router.get("/env", env);
+  router.get("/health", configureController(health, config.health));
+  router.get("/info", configureController(info, config.info));
+  router.get("/env", configureController(env, config.env));
 
   return router;
 });
