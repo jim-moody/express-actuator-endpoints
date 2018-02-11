@@ -1,13 +1,12 @@
 {
   "name": "express-actuator-endpoints",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "start":
-      "nodemon app.js --exec babel-node --presets env --plugins transform-object-rest-spread",
+    "start": "nodemon app.js --exec babel-node --presets env --plugins transform-object-rest-spread",
     "test": "jest",
     "debug": "nodemon app.js --inspect --exec babel-node --presets env",
     "git-info": "node-git-info-json"
@@ -18,8 +17,14 @@
       "pre-push": "npm test"
     }
   },
-  "files": ["dist"],
-  "keywords": ["express", "actuator", "node"],
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "express",
+    "actuator",
+    "node"
+  ],
   "homepage": "https://github.com/jim-moody/express-actuator-endpoints",
   "repository": {
     "url": "https://github.com/jim-moody/express-actuator-endpoints"
