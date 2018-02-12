@@ -30,7 +30,9 @@ var info = (function (req, res, config) {
 var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var env = (function (req, res, config) {
-  var defaultBody = _extends$2({}, process.env);
+  var defaultBody = {
+    systemEnvironment: _extends$2({}, process.env)
+  };
 
   var body = _extends$2({}, defaultBody, config);
 

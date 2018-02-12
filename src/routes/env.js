@@ -1,6 +1,8 @@
 export default (req, res, config) => {
   const defaultBody = {
-    ...process.env
+    systemEnvironment: {
+      ...process.env
+    }
   };
 
   const body = {

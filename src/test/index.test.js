@@ -12,12 +12,14 @@ describe("GET /info", () => {
     app = express();
     app.use(middleware());
   });
-  it("should return json with a 200 response", () =>
+
+  test("should return json with a 200 response", () =>
     request(app)
       .get("/info")
       .expect("Content-Type", /json/)
       .expect(200));
-  it("should return empty object for git when no git properties file is defined", () =>
+
+  test("should return empty object for git when no git properties file is defined", () =>
     request(app)
       .get("/info")
       .then(({ body }) => expect(body).toEqual({})));
@@ -28,7 +30,8 @@ describe("GET /health", () => {
     app = express();
     app.use(middleware());
   });
-  it("should return expected JSON with a 200 response", () => {
+
+  test("should return expected JSON with a 200 response", () => {
     const healthBody = {
       description: "Your API",
       status: "UP"
@@ -46,12 +49,14 @@ describe("GET /env", () => {
     app = express();
     app.use(middleware());
   });
-  it("should return process.env as JSON with a 200 response", () =>
+  test("should return process.env as JSON with a 200 response", () =>
     request(app)
       .get("/env")
       .expect("Content-Type", /json/)
       .expect(200)
-      .then(({ body }) => expect(body).toEqual({ ...process.env })));
+      .then(({ body }) =>
+        expect(body).toEqual({ systemEnvironment: { ...process.env } })
+      ));
 });
 
 describe("Custom Configuration", () => {
@@ -100,6 +105,7 @@ describe("Custom Configuration", () => {
       .expect(200)
       .then(({ body }) => expect(body).toEqual(expectedBody));
   });
+
   test("/env should return additional properties passed in as config object", () => {
     const config = {
       env: {
@@ -110,7 +116,9 @@ describe("Custom Configuration", () => {
     const expectedBody = {
       test4: "test4",
       test5: "test5",
-      ...process.env
+      systemEnvironment: {
+        ...process.env
+      }
     };
     configApp.use(middleware(config));
 
@@ -128,7 +136,7 @@ describe("Custom Configuration", () => {
     };
     fs.writeFileSync(filePath, JSON.stringify(gitInfo));
 
-    const json = require(filePath);
+    const json = require(filePath); // eslint-disable-line global-require
 
     const config = {
       info: {
