@@ -48,3 +48,24 @@ const actuatorConfig = {
 const app = express();
 app.use(actuator(actuatorConfig));
 ```
+
+If you don't want to expose your `process.env` you can change the endpoint response as follow:
+```js
+import express from "express";
+import actuator from "express-actuator-endpoints";
+
+const actuatorConfig = {
+  info: {
+    gitInfo: "Some git info"
+  },
+  health: {
+    description: "Jim's API"
+  },
+  env: {
+    systemEnvironment: null
+  }
+};
+
+const app = express();
+app.use(actuator(actuatorConfig));
+```
